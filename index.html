@@ -36,11 +36,16 @@
       //CODE TO MATCH THE PLAYGROUND FORMAT ********
       const createScene = function () {
         const scene = new BABYLON.Scene(engine);
-        BABYLON.SceneLoader.ImportMeshAsync(
-          "",
-          "https://assets.babylonjs.com/meshes/",
-          "box.babylon"
-        );
+
+        // // IMPORT MODEL
+        // BABYLON.SceneLoader.ImportMeshAsync(
+        //   "",
+        //   "https://assets.babylonjs.com/meshes/",
+        //   "box.babylon"
+        // );
+
+        // CONSTRUCT MODEL
+        BABYLON.MeshBuilder.CreateBox("box", {});
         const camera = new BABYLON.ArcRotateCamera(
           "camera",
           -Math.PI / 2,
