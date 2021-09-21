@@ -46,8 +46,14 @@
         // );
 
         // ELEMENTS
+        // FACE MATERIALS
+        faceUV = [];
+        faceUV[0] = new BABYLON.Vector4(0.5, 0.0, 0.75, 1.0); // REAR / BACK FACE
+        faceUV[1] = new BABYLON.Vector4(0.0, 0.0, 0.25, 1.0); // FRONT FACE
+        faceUV[2] = new BABYLON.Vector4(0.25, 0, 0.5, 1.0); // RIGHT SIDE
+        faceUV[3] = new BABYLON.Vector4(0.75, 0, 1.0, 1.0); // LEFT SIDE
         // CONSTRUCT MODEL
-        const box = BABYLON.MeshBuilder.CreateBox("box", {});
+        const box = BABYLON.MeshBuilder.CreateBox("box", {faceUV: faceUV, wrap: true});
         box.position.y = 0.5; //BOX CREATED WITH DEFAULT SIZE SO HEIGHT IS 1
         // PLACE AND SCALE A MESH
         // SIZE
@@ -99,11 +105,12 @@
 
         const boxMat = new BABYLON.StandardMaterial("boxMat");
         boxMat.diffuseTexture = new BABYLON.Texture(
-          "https://www.babylonjs-playground.com/textures/floor.png"
+          "https://assets.babylonjs.com/environments/cubehouse.png"
         );
 
         roof.material = roofMat;
         box.material = boxMat;
+
         // SOUND
         // const sound = new BABYLON.Sound(
         //   "name",
