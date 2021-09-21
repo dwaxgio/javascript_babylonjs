@@ -56,6 +56,9 @@
         const box = buildBox();
         const roof = buildRoof();
 
+        // COMBINE MESHES
+        const house = BABYLON.Mesh.MergeMeshes([box, roof], true, false, null, false, true);
+
         return scene;
       };
 
