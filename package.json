@@ -19,5 +19,8 @@
   "dependencies": {
     "earcut": "^2.2.3",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/earcut": "^2.1.1"
   }
 }
