@@ -49,6 +49,26 @@
         // CONSTRUCT MODEL
         const box = BABYLON.MeshBuilder.CreateBox("box", {});
         box.position.y = 0.5; //BOX CREATED WITH DEFAULT SIZE SO HEIGHT IS 1
+        // PLACE AND SCALE A MESH
+        // SIZE
+        // box.scaling.x = 2;
+        // box.scaling.y = 1.5;
+        // box.scaling.z = 3;
+
+        // OR SCALING IN A SINGLE LINE
+        box.scaling = new BABYLON.Vector3(2, 1.5, 3);
+
+        // POSITION
+        // box.position.x = -2;
+        // box.position.y = 4.2;
+        // box.position.z = 0.1;
+
+        // OR POSITION IN A SINGLE LINE
+        box.position = new BABYLON.Vector3(-2, 4.2, 0.1);
+
+        // ORIENTATION
+        //box.rotation.y = Math.PI / 4;
+        box.rotation.y = BABYLON.Tools.ToRadians(45);
         // GROUND
         const ground = BABYLON.MeshBuilder.CreateGround("ground", {
           width: 10,
