@@ -261,11 +261,26 @@
         outline.push(new BABYLON.Vector3(0, 0, 0.1));
         outline.push(new BABYLON.Vector3(-0.3, 0, 0.1));
 
-        // BACK FORMED AUTOMATICALLY
+        // FACE UVS
+        const faceUV = [];
+        faceUV[0] = new BABYLON.Vector4(0, 0.5, 0.38, 1);
+        faceUV[1] = new BABYLON.Vector4(0, 0, 1, 0.5);
+        faceUV[2] = new BABYLON.Vector4(0.38, 1, 0, 0.5);
+
+        // MATERIAL
+        const carMat = new BABYLON.StandardMaterial("carMat");
+        carMat.diffuseTexture = new BABYLON.Texture(
+          "https://assets.babylonjs.com/environments/car.png"
+        );
+
         const car = BABYLON.MeshBuilder.ExtrudePolygon("car", {
           shape: outline,
           depth: 0.2,
+          faceUV: faceUV,
+          wrap: true,
         });
+        car.material = carMat;
+
         return car;
       };
       //CODE TO MATCH THE PLAYGROUND FORMAT ******** /
