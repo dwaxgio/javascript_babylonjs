@@ -21,19 +21,6 @@
         height: 100%;
         touch-action: none;
       }
-
-      #holder {
-        width: 80%;
-        height: 100%;
-        float: left;
-      }
-
-      #instructions {
-        width: 20%;
-        height: 100%;
-        float: left;
-        background-color: rgb(145, 183, 255);
-      }
     </style>
 
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
@@ -43,17 +30,7 @@
     <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
   </head>
   <body>
-    <div id="holder">
-      <canvas id="renderCanvas" touch-action="none"></canvas>
-      <!-- touch-action="none" for best results from PEP -->
-    </div>
-    <div id="instructions">
-      <br />
-      <h2>Instructions</h2>
-      <br />
-      Instructions Instructions Instructions Instructions Instructions
-      Instructions Instructions Instructions Instructions Instructions
-    </div>
+    <canvas id="renderCanvas" touch-action="none"></canvas>
     <script>
       const canvas = document.getElementById("renderCanvas"); // GET THE CANVAS ELEMENT
       const engine = new BABYLON.Engine(canvas, true); // GENERATE THE BABYLON 3D ENGINE
@@ -214,7 +191,6 @@
 
         return roof;
       };
-
       //CODE TO MATCH THE PLAYGROUND FORMAT ******** /
       const scene = createScene();
       //REGISTER A RENDER LOOP TO REPEATEDLY RENDER THE SCENE

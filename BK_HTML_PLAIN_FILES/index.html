@@ -77,6 +77,8 @@
 
         buildDwellings();
 
+        buildCar();
+
         return scene;
       };
 
@@ -215,6 +217,36 @@
         return roof;
       };
 
+      // BUILD CAR
+      const buildCar = () => {
+        //BASE
+        const outline = [
+          new BABYLON.Vector3(-0.3, 0, -0.1),
+          new BABYLON.Vector3(0.2, 0, -0.1),
+        ];
+
+        // CURVED FRONT
+        for (let i = 0; i < 20; i++) {
+          outline.push(
+            new BABYLON.Vector3(
+              0.2 * Math.cos((i * Math.PI) / 40),
+              0,
+              0.2 * Math.sin((i * Math.PI) / 40) - 0.1
+            )
+          );
+        }
+
+        // TOP
+        outline.push(new BABYLON.Vector3(0, 0, 0.1));
+        outline.push(new BABYLON.Vector3(-0.3, 0, 0.1));
+
+        // BACK FORMED AUTOMATICALLY
+        const car = BABYLON.MeshBuilder.ExtrudePolygon("car", {
+          shape: outline,
+          depth: 0.2,
+        });
+        return car;
+      };
       //CODE TO MATCH THE PLAYGROUND FORMAT ******** /
       const scene = createScene();
       //REGISTER A RENDER LOOP TO REPEATEDLY RENDER THE SCENE
