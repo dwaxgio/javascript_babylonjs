@@ -52,6 +52,13 @@
           new BABYLON.Vector3(1, 1, 0)
         );
 
+        buildDwellings();
+
+        return scene;
+      };
+
+      /******Build Functions***********/
+      const buildDwellings = () => {
         const ground = buildGround();
 
         // MULTIPLE HOUSES
@@ -96,11 +103,8 @@
           houses[i].position.x = places[i][2];
           houses[i].position.z = places[i][3];
         }
-
-        return scene;
       };
 
-      /******Build Functions***********/
       const buildGround = () => {
         //color
         const groundMat = new BABYLON.StandardMaterial("groundMat");
