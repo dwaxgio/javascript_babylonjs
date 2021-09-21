@@ -81,24 +81,7 @@
 
         // CAR
         const car = buildCar();
-
-        const wheelRB = BABYLON.MeshBuilder.CreateCylinder("wheelRB", {
-          diameter: 0.125,
-          height: 0.05,
-        });
-        wheelRB.parent = car;
-        wheelRB.position.z = -0.1;
-        wheelRB.position.x = -0.2;
-        wheelRB.position.y = 0.035;
-
-        wheelRF = wheelRB.clone("wheelRF");
-        wheelRF.position.x = 0.1;
-
-        wheelLB = wheelRB.clone("wheelLB");
-        wheelLB.position.y = -0.2 - 0.035;
-
-        wheelLF = wheelRF.clone("wheelLF");
-        wheelLF.position.y = -0.2 - 0.035;
+        car.rotation.x = -Math.PI / 2;
 
         return scene;
       };
@@ -267,7 +250,7 @@
         faceUV[1] = new BABYLON.Vector4(0, 0, 1, 0.5);
         faceUV[2] = new BABYLON.Vector4(0.38, 1, 0, 0.5);
 
-        // MATERIAL
+        // CAR MATERIAL
         const carMat = new BABYLON.StandardMaterial("carMat");
         carMat.diffuseTexture = new BABYLON.Texture(
           "https://assets.babylonjs.com/environments/car.png"
@@ -280,6 +263,38 @@
           wrap: true,
         });
         car.material = carMat;
+
+        // WHEELS FACE UVS
+        const wheelUV = [];
+        wheelUV[0] = new BABYLON.Vector4(0, 0, 1, 1);
+        wheelUV[1] = new BABYLON.Vector4(0, 0.5, 0, 0.5);
+        wheelUV[2] = new BABYLON.Vector4(0, 0, 1, 1);
+
+        // WHEELS MATERIAL
+        const wheelMat = new BABYLON.StandardMaterial("wheelMat");
+        wheelMat.diffuseTexture = new BABYLON.Texture(
+          "https://assets.babylonjs.com/environments/wheel.png"
+        );
+
+        const wheelRB = BABYLON.MeshBuilder.CreateCylinder("wheelRB", {
+          diameter: 0.125,
+          height: 0.05,
+          faceUV: wheelUV,
+        });
+        wheelRB.material = wheelMat;
+        wheelRB.parent = car;
+        wheelRB.position.z = -0.1;
+        wheelRB.position.x = -0.2;
+        wheelRB.position.y = 0.035;
+
+        wheelRF = wheelRB.clone("wheelRF");
+        wheelRF.position.x = 0.1;
+
+        wheelLB = wheelRB.clone("wheelLB");
+        wheelLB.position.y = -0.2 - 0.035;
+
+        wheelLF = wheelRF.clone("wheelLF");
+        wheelLF.position.y = -0.2 - 0.035;
 
         return car;
       };
