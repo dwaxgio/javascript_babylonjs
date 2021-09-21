@@ -79,12 +79,31 @@
         roof.scaling.x = 0.75;
         roof.rotation.z = Math.PI / 2;
         roof.position.y = 1.22;
+
         // GROUND
         const ground = BABYLON.MeshBuilder.CreateGround("ground", {
           width: 10,
           height: 10,
         });
 
+        // TEXTURE;
+        const groundMat = new BABYLON.StandardMaterial("groundMat");
+        groundMat.diffuseColor = new BABYLON.Color3(0, 1, 0); // RGB
+        ground.material = groundMat; // PLACE MATERIAL PROPERTY OF THE GROUND
+
+        const roofMat = new BABYLON.StandardMaterial("roofMat");
+        roofMat.diffuseTexture = new BABYLON.Texture(
+          "https://assets.babylonjs.com/environments/roof.jpg",
+          scene
+        );
+
+        const boxMat = new BABYLON.StandardMaterial("boxMat");
+        boxMat.diffuseTexture = new BABYLON.Texture(
+          "https://www.babylonjs-playground.com/textures/floor.png"
+        );
+
+        roof.material = roofMat;
+        box.material = boxMat;
         // SOUND
         // const sound = new BABYLON.Sound(
         //   "name",
