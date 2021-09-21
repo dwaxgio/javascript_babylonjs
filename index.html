@@ -55,6 +55,21 @@
           height: 10,
         });
 
+        // SOUND
+        // const sound = new BABYLON.Sound(
+        //   "name",
+        //   "./src/sound.mp3",
+        //   scene,
+        //   null,
+        //   { loop: true, autoplay: true }
+        // );
+
+        //
+
+        // // TO PLAY SOUND ONCE
+        const sound = new BABYLON.Sound("sound", "./src/sound.mp3", scene);
+        // LEAVE TIME FOR THE SOUND FILE TO LOAD BEFORE PLAYING IT
+        sound.play();
         // SCENE
         const camera = new BABYLON.ArcRotateCamera(
           "camera",
