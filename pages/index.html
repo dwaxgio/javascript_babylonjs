@@ -96,11 +96,11 @@
         );
         groundMat.diffuseTexture.hasAlpha = true;
 
-        const ground2 = BABYLON.MeshBuilder.CreateGround("ground2", {
+        const ground = BABYLON.MeshBuilder.CreateGround("ground", {
           width: 24,
           height: 24,
         });
-        ground2.material = groundMat;
+        ground.material = groundMat;
 
         // VALLEY
         const largeGroundMat = new BABYLON.StandardMaterial("largeGroundMat");
@@ -126,11 +126,8 @@
         BABYLON.SceneLoader.ImportMeshAsync(
           "",
           "https://assets.babylonjs.com/meshes/",
-          "village.glb"
-        ).then(() => {
-          const ground2 = scene.getMeshByName("ground");
-          ground.position.y = -0.5;
-        });
+          "valleyvillage.glb"
+        );
 
         // COLLISION
         const wireMat = new BABYLON.StandardMaterial("wireMat");
