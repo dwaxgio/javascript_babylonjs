@@ -77,6 +77,11 @@
         const scene = new BABYLON.Scene(engine);
 
         // VALLEY
+        const largeGroundMat = new BABYLON.StandardMaterial("largeGroundMat");
+        largeGroundMat.diffuseTexture = new BABYLON.Texture(
+          "https://assets.babylonjs.com/environments/valleygrass.png"
+        );
+
         const largeGround = BABYLON.MeshBuilder.CreateGroundFromHeightMap(
           "largeGround",
           "https://assets.babylonjs.com/environments/villageheightmap.png",
@@ -88,6 +93,8 @@
             maxHeight: 10,
           }
         );
+
+        largeGround.material = largeGroundMat;
 
         const camera = new BABYLON.ArcRotateCamera(
           "camera",
