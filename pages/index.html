@@ -97,7 +97,7 @@
 
         // COLLISION
         const wireMat = new BABYLON.StandardMaterial("wireMat");
-        wireMat.wireframe = true;
+        wireMat.alpha = 0;
 
         const hitBox = BABYLON.MeshBuilder.CreateBox("carbox", {
           width: 0.5,
