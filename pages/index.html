@@ -129,14 +129,15 @@
 
           if (distance > track[p].dist) {
             sphere.rotate(BABYLON.Axis.Y, track[p].turn, BABYLON.Space.LOCAL);
-            p+=1;
-            p%= track.length;
-            if(p === 0){
+            p += 1;
+            p %= track.length;
+            if (p === 0) {
               distance = 0;
-              sphere.position = new BABYLON.Vector3(2,0,2); // RESET TO INITIAL CONDITIONS
+              sphere.position = new BABYLON.Vector3(2, 0, 2); // RESET TO INITIAL CONDITIONS
               sphere.rotation = BABYLON.Vector3.Zero(); // PREVENTS ERROR ACCUMULATION
             }
           }
+          // TEST
         });
 
         return scene;
