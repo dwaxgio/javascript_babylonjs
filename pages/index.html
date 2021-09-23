@@ -181,6 +181,31 @@
         fountain.position.x = -4;
         fountain.position.z = -6;
 
+        // EVENT
+        let switched = false; // ON / OFF FLAG
+        const pointerDown = (mesh) => {
+          if (mesh === fountain) {
+            switched = !switched;
+            if (switched) {
+              // START THE PARTICLE SYSTEM
+              particleSystem.start();
+            } else {
+              // STOP THE PARTICLE SYSTEM
+              particleSystem.stop();
+            }
+          }
+        };
+
+        scene.onPointerObservable.add((pointerInfo) => {
+          switch (pointerInfo.type) {
+            case BABYLON.PointerEventTypes.POINTERDOWN:
+              if (pointerInfo.pickInfo.hit) {
+                pointerDown(pointerInfo.pickInfo.pickedMesh);
+              }
+              break;
+          }
+        });
+
         // Create a particle system
         var particleSystem = new BABYLON.ParticleSystem(
           "particles",
@@ -234,7 +259,7 @@
         particleSystem.updateSpeed = 0.01;
 
         // Start the particle system
-        particleSystem.start();
+        //particleSystem.start();
 
         // VALLEY
         const largeGroundMat = new BABYLON.StandardMaterial("largeGroundMat");
