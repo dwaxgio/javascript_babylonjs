@@ -145,6 +145,20 @@
           tree.position.y = 0.5;
         }
 
+        // ANIMATION
+        const spriteManagerUFO = new BABYLON.SpriteManager(
+          "spriteManagerUFO",
+          "assets/sprites/ufo.png",
+          1,
+          { width: 128, height: 76 }
+        );
+        const ufo = new BABYLON.Sprite("ufo", spriteManagerUFO);
+        ufo.playAnimation(0,16,true,125);
+        ufo.position.y = 5;
+        ufo.position.z = 0;
+        ufo.width = 2;
+        ufo.height = 1;
+
         // VALLEY
         const largeGroundMat = new BABYLON.StandardMaterial("largeGroundMat");
         largeGroundMat.diffuseTexture = new BABYLON.Texture(
