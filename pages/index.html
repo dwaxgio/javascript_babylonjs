@@ -64,10 +64,10 @@
       Instructions Instructions Instructions Instructions Instructions
     </div>
     <div id="readyplayerme-avatar">
-      <babylon
+      <!-- <babylon
         model="https://d1a370nemizbjq.cloudfront.net/c2933994-e012-4be8-ba53-bdb833e23b3e.glb"
         templates.main.params.fill-screen="true"
-      ></babylon>
+      ></babylon> -->
     </div>
     <script>
       const canvas = document.getElementById("renderCanvas"); // GET THE CANVAS ELEMENT
@@ -83,11 +83,31 @@
           15,
           new BABYLON.Vector3(0, 0, 0)
         );
+        camera.upperBetaLimit = Math.PI / 2.2;
         camera.attachControl(canvas, true);
         const light = new BABYLON.HemisphericLight(
           "light",
           new BABYLON.Vector3(1, 1, 0)
         );
+
+        // SKYBOX
+        const skybox = BABYLON.MeshBuilder.CreateBox(
+          "skyBox",
+          { size: 150 },
+          scene
+        );
+        const skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+        skyboxMaterial.backFaceCulling = false;
+        skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(
+          // "https://assets.babylonjs.com/environments/environmentSpecular.env",
+           "public/textures/skybox",
+          scene
+        );
+        skyboxMaterial.reflectionTexture.coordinatesMode =
+          BABYLON.Texture.SKYBOX_MODE;
+        skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+        skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+        skybox.material = skyboxMaterial;
 
         // VILLAGE
         const groundMat = new BABYLON.StandardMaterial("groundMat");

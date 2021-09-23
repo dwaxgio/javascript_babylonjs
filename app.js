@@ -4,6 +4,8 @@ const app = express();
 
 const earcut = require("earcut");
 
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
 app.get("/", (req, res) => {
   //res.send("Hello World!");
   res.sendFile(path.join(__dirname, "/pages/index.html"));
