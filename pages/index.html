@@ -99,8 +99,8 @@
         const skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
         skyboxMaterial.backFaceCulling = false;
         skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(
-          // "https://assets.babylonjs.com/environments/environmentSpecular.env",
-           "public/textures/skybox",
+          // "https://assets.babylonjs.com/environments/environmentSpecular.env", // WORKS WITH HTTP LINK
+          "assets/textures/skybox", // WORKS ON LOCAL, WITH THE REFERENCE OF THE PUBLIC FOLDER EN APP.JS
           scene
         );
         skyboxMaterial.reflectionTexture.coordinatesMode =
@@ -121,6 +121,29 @@
           height: 24,
         });
         ground.material = groundMat;
+
+        // TREES
+        const spriteManagerTrees = new BABYLON.SpriteManager(
+          "treesManager",
+          "assets/sprites/palmtree.png",
+          2000,
+          { width: 512, height: 1024 },
+          scene
+        );
+
+        // TREES IN RANDOM POSITIONS
+        for (let i = 0; i < 500; i++) {
+          const tree = new BABYLON.Sprite("tree", spriteManagerTrees);
+          tree.position.x = Math.random() * -30;
+          tree.position.z = Math.random() * 20 + 8;
+          tree.position.y = 0.5;
+        }
+        for (let i = 0; i < 500; i++) {
+          const tree = new BABYLON.Sprite("tree", spriteManagerTrees);
+          tree.position.x = Math.random() * 25 + 7;
+          tree.position.z = Math.random() * -35 + 8;
+          tree.position.y = 0.5;
+        }
 
         // VALLEY
         const largeGroundMat = new BABYLON.StandardMaterial("largeGroundMat");
