@@ -80,12 +80,12 @@
 
         const camera = new BABYLON.ArcRotateCamera(
           "camera",
-          0,
-          Math.PI / 4,
-          15,
-          new BABYLON.Vector3(0, 0, 0)
+          Math.PI / 2,
+          Math.PI / 2.5,
+          150,
+          new BABYLON.Vector3(0, 60, 0)
         );
-        //camera.upperBetaLimit = Math.PI / 2.2;
+        camera.upperBetaLimit = Math.PI / 2.2;
         camera.attachControl(canvas, true);
 
         const light = new BABYLON.DirectionalLight(
@@ -196,7 +196,7 @@
         ).then(() => {
           scene.getMeshByName("ground").receiveShadows = true;
         });
-        
+
         // VILLAGE
         const groundMat = new BABYLON.StandardMaterial("groundMat");
         groundMat.diffuseTexture = new BABYLON.Texture(
@@ -450,8 +450,15 @@
         };
 
         const track = [];
-        track.push(new walk(180, 2.5));
-        track.push(new walk(0, 5));
+        track.push(new walk(86, 7));
+        track.push(new walk(-85, 14.8));
+        track.push(new walk(-93, 16.5));
+        track.push(new walk(48, 25.5));
+        track.push(new walk(-112, 30.5));
+        track.push(new walk(-72, 33.2));
+        track.push(new walk(42, 37.5));
+        track.push(new walk(-98, 45.2));
+        track.push(new walk(0, 47));
 
         // DUDE
         BABYLON.SceneLoader.ImportMeshAsync(
@@ -466,12 +473,16 @@
           // SHADOW FOR DUDE
           shadowGenerator.addShadowCaster(dude, true);
 
-          dude.position = new BABYLON.Vector3(1.5, 0, -6.9);
+          dude.position = new BABYLON.Vector3(-6, 0, 0);
           dude.rotate(
             BABYLON.Axis.Y,
-            BABYLON.Tools.ToRadians(-90),
+            BABYLON.Tools.ToRadians(-95),
             BABYLON.Space.LOCAL
           );
+
+          // CAMERA FOR DUDE
+          camera.parent = dude;
+
           const startRotation = dude.rotationQuaternion.clone();
 
           scene.beginAnimation(result.skeletons[0], 0, 100, true, 1);
