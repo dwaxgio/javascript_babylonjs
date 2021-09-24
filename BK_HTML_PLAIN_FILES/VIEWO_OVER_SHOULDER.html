@@ -78,28 +78,14 @@
       const createScene = () => {
         const scene = new BABYLON.Scene(engine);
 
-        const camera = new BABYLON.FollowCamera(
-          "FollowCam",
-          new BABYLON.Vector3(-6, 0, 0),
-          scene
+        const camera = new BABYLON.ArcRotateCamera(
+          "camera",
+          Math.PI / 2,
+          Math.PI / 2.5,
+          150,
+          new BABYLON.Vector3(0, 60, 0)
         );
-
-        // THE GOAL DISTANCE OF CAMERA FROM TARGET
-        camera.radious = 1;
-
-        // THE GOAL HEIGNT OF CAMERA ABOVE LOCAL ORIGIN (CENTRE) OF TARGET
-        camera.heightOffset = 8;
-
-        // THE GOAL ROTATION OF CAMERA AROUND LOCAL ORIGIN (CENTRE) OF TARGET IN X Y PLANE
-        camera.rotationOffset = 0;
-
-        // ACCELERATION OF CAMERA IN MOVING FROM CURRENT TO GOAL POSITION
-        camera.cameraAcceleration = 0.005;
-
-        // THE SPEED AT WICH ACCELERATION IS HALTED
-        camera.maxCameraSpeed = 10;
-
-        //camera.upperBetaLimit = Math.PI / 2.2;
+        camera.upperBetaLimit = Math.PI / 2.2;
         camera.attachControl(canvas, true);
 
         const light = new BABYLON.DirectionalLight(
@@ -495,8 +481,7 @@
           );
 
           // CAMERA FOR DUDE (OVER THE SHOULDER)
-          //camera.parent = dude;
-          camera.lockedTarget = dude;
+          camera.parent = dude;
 
           const startRotation = dude.rotationQuaternion.clone();
 
